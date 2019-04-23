@@ -1,4 +1,4 @@
-# vue-affix
+# easy-affix
 
 ## Project setup
 

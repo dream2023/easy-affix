@@ -5,8 +5,8 @@
         <h1 class="title is-1 logo-heading">
           <a
             href="https://github.com/dream10nian/easy-affix"
-            title="vue-affix"
-          >vue-affix</a>
+            title="easy-affix"
+          >easy-affix | vue图钉组件</a>
         </h1>
       </div>
     </section>
@@ -17,7 +17,7 @@
           <aside class="sidebar column is-3">
             <affix class="menu sidebar-menu">
               <div class="menu-label">
-                <h2>Affix sidebar</h2>
+                <h2>导航栏</h2>
               </div>
               <div
                 :offset="0"
@@ -27,17 +27,17 @@
                   class="scrollactive-item"
                   href="#intro"
                   title="Intro"
-                >Intro</a>
+                >介绍</a>
                 <a
                   class="scrollactive-item"
                   href="#standard-affix"
                   title="Standard Affix"
-                >Standard Affix</a>
+                >参数</a>
                 <a
                   class="scrollactive-item"
                   href="#scroll-affix"
                   title="Scroll Affix"
-                >Scroll Affix</a>
+                >时间</a>
                 <a
                   class="scrollactive-item"
                   href="#markup-1"
@@ -68,7 +68,7 @@
               >
                 <h1 class="title is-2">Intro</h1>
                 <p>
-                  In this demo of vue-affix, I'll demonstrate how you can implement both the standard affix and the scroll affix that this component provides. I'll also use
+                  In this demo of easy-affix, I'll demonstrate how you can implement both the standard affix and the scroll affix that this component provides. I'll also use
                   <a
                     href="http://github.com/eddiemf/vue-scrollactive"
                   >vue-scrollactive</a>, which is another vue component made by
@@ -124,10 +124,8 @@
 
           <aside class="column is-2">
             <affix
-              :distance="100"
+              :offset="100"
               class="scrollaffix-sidebar"
-              relative-element-selector="#example-content"
-              type="bottom"
             >
               <div class="card">
                 <header class="card-header">
@@ -176,7 +174,9 @@ export default {
 body {
   overflow-x: hidden;
 }
-
+.hero.is-info {
+  background-color: #409eff;
+}
 .hero a {
   color: #00d1b2 !important;
 }

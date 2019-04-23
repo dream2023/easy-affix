@@ -23,7 +23,7 @@ export default {
       }
     },
     // 距离
-    distance: {
+    offset: {
       type: Number,
       default: 0
     },
@@ -49,11 +49,11 @@ export default {
   computed: {
     // 距离顶部的偏移
     offsetTop () {
-      return this.type === 'top' ? this.distance : 0
+      return this.type === 'top' ? this.offset : 0
     },
     // 距离底部的偏移
     offsetBottom () {
-      return this.type === 'bottom' ? this.distance : 0
+      return this.type === 'bottom' ? this.offset : 0
     },
     // 元素自身的信息
     elRect () {
@@ -82,7 +82,7 @@ export default {
           zIndex: this.zIndex,
           left: elRect.left + 'px',
           width: elRect.width + 'px',
-          [this.type]: this.distance + 'px'
+          [this.type]: this.offset + 'px'
         }
       } else {
         return {}
