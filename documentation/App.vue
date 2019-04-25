@@ -1,7 +1,8 @@
 <template>
   <div id="app">
-    <section class="hero is-info">
-      <div class="container">
+    <github/>
+    <section class="hero">
+      <div class="container page-title">
         <h1 class="title is-1 logo-heading">
           <a
             href="https://github.com/dream10nian/easy-affix"
@@ -14,7 +15,7 @@
     <main class="examples-section">
       <div class="container">
         <div class="columns">
-          <aside class="sidebar column is-3">
+          <aside class="sidebar column is-2">
             <affix class="menu sidebar-menu">
               <div class="menu-label">
                 <h2>导航栏</h2>
@@ -24,117 +25,165 @@
                 class="menu-list"
               >
                 <a
-                  class="scrollactive-item"
                   href="#intro"
                   title="Intro"
                 >介绍</a>
                 <a
-                  class="scrollactive-item"
-                  href="#standard-affix"
-                  title="Standard Affix"
-                >参数</a>
+                  href="#reason"
+                  title="Reason"
+                >创作原因</a>
                 <a
-                  class="scrollactive-item"
-                  href="#scroll-affix"
-                  title="Scroll Affix"
-                >时间</a>
+                  href="#install"
+                  title="Install"
+                >安装</a>
                 <a
-                  class="scrollactive-item"
-                  href="#markup-1"
-                  title="Markup 1"
-                >Markup 1</a>
+                  href="#usage"
+                  title="Usage"
+                >使用</a>
                 <a
-                  class="scrollactive-item"
-                  href="#markup-2"
-                  title="Markup 2"
-                >Markup 2</a>
-                <a
-                  class="scrollactive-item"
-                  href="#markup-3"
-                  title="Markup 3"
-                >Markup 3</a>
+                  href="#props"
+                  title="Props"
+                >Props参数</a>
               </div>
             </affix>
           </aside>
 
           <div class="column">
             <div
-              class="hero is-info"
+              class="hero"
               id="example-content"
             >
               <section
                 class="hero-body"
                 id="intro"
               >
-                <h1 class="title is-2">Intro</h1>
+                <h1 class="title is-2">介绍</h1>
+                <p>使用图钉，可以将内容固定在屏幕上，并且不随页面的滚动而滚动。常用于侧边菜单等。</p>
+              </section>
+              <section
+                class="hero-body"
+                id="reason"
+              >
+                <h1 class="title is-2">创作原因</h1>
                 <p>
-                  In this demo of easy-affix, I'll demonstrate how you can implement both the standard affix and the scroll affix that this component provides. I'll also use
-                  <a
-                    href="http://github.com/eddiemf/vue-scrollactive"
-                  >vue-scrollactive</a>, which is another vue component made by
-                  <a href="http://github.com/eddiemf">me</a>, to highlight the sidebar menu items as you scroll.
+                  其实在
+                  <code>iview</code>和
+                  <code>ant-design</code>框架中已有
+                  affix组件, 但如果在小项目或者使用element之类的框架, 就没办法引入了(虽然可以同时安装两个框架,也可以按需引入, 但是不建议)。
+                </p>
+                <br>
+                <p>
+                  另外, 网上虽然已有
+                  <code>vue-affix</code>, 但是其必须指定相对元素, 而不可以默认跟随window, 所以和我的需求略微不同, 就动手做了一个。
                 </p>
               </section>
 
               <section
                 class="hero-body"
-                id="standard-affix"
+                id="install"
               >
-                <h1 class="title is-2">Standard Affix</h1>
-                <p>To the left side, is a standard affix being used in a sidebar. That is probably the case where it will be mostly used, and it's ridiculously easy to implement. You see that the sidebar is simply moving relatively to this content section, when you scroll past the section, the sidebar will be affixed, when it reaches the end of the section, it will stay still, and this relative section is all you need to set basically.</p>
-                <br>
-                <p>One thing to be aware of is that you'll probably want to set a width value to the affixed element, because when it receives the fixed position, it will lose its container width since its container now will be the window. If you don't set one, it will probably break depending on its content and your style.</p>
+                <h1 class="title is-2">安装</h1>
+                <affix type="bottom">
+                  <blockquote>npm install easy-affix --save</blockquote>
+                </affix>
               </section>
 
               <section
                 class="hero-body"
-                id="scroll-affix"
+                id="usage"
               >
-                <h1 class="title is-2">Scroll Affix</h1>
-                <p>To the right side, is the scroll affix option being used in an aside div. The scroll affix works almost like the standard affix, but it will always be taller than the viewport height, that way if you scroll to the bottom, instead of being affixed to the top of the screen like the standard affix, you will be able to scroll until you reach the end of the scroll affix, then it will be fixed to the bottom. The same happens when you scroll up.</p>
-                <br>
-                <p>Remember that you need to set the scroll-affix prop to true for this behavior, otherwise it will always stay fixed to the top, and if it is taller than the viewport height, you'll only be able to see its end when it reaches the end of the relative section.</p>
+                <h1 class="title is-2">使用</h1>
+                <p>左侧导航栏使用了最基本的形式:</p>
+                <blockquote>
+                  <pre class="language-html"><code class="language-html">&lt;affix&gt;导航栏...&lt;/affix&gt;</code></pre>
+                </blockquote>
+                <p>右侧相关链接使用了偏移距离:</p>
+                <blockquote>
+                  <pre class="language-html"><code class="language-html">&lt;affix&nbsp;:offset="50"&gt;相关链接...&lt;/affix></code></pre>
+                </blockquote>
+                <p>上面的安装提示使用了相对于窗口底部偏移:</p>
+                <blockquote>
+                  <pre class="language-html"><code class="language-html">&lt;affix&nbsp;type="bottom"&gt;npm install easy-affix --save&lt;/affix></code></pre>
+                </blockquote>
               </section>
 
               <section
                 class="hero-body"
-                id="markup-1"
+                id="props"
               >
-                <h1 class="title is-2">Markup Text 1</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis repellendus, omnis quidem ad dolorem aliquid. Fugit dolorem dolor ea odit omnis deleniti rerum vel, deserunt et, eius labore placeat rem.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quis in voluptatem optio labore exercitationem ab porro unde dolorum, distinctio itaque doloribus quas maxime? Dolor, assumenda veritatis reiciendis fuga perspiciatis!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse hic neque nesciunt incidunt nemo fugit dolorum inventore nam illo tempora voluptate architecto, aspernatur ducimus, iusto doloribus quos doloremque. Beatae, deserunt.</p>
-              </section>
-
-              <section
-                class="hero-body"
-                id="markup-2"
-              >
-                <h1 class="title is-2">Markup Text 2</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis repellendus, omnis quidem ad dolorem aliquid. Fugit dolorem dolor ea odit omnis deleniti rerum vel, deserunt et, eius labore placeat rem.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quis in voluptatem optio labore exercitationem ab porro unde dolorum, distinctio itaque doloribus quas maxime? Dolor, assumenda veritatis reiciendis fuga perspiciatis!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse hic neque nesciunt incidunt nemo fugit dolorum inventore nam illo tempora voluptate architecto, aspernatur ducimus, iusto doloribus quos doloremque. Beatae, deserunt.</p>
-              </section>
-
-              <section
-                class="hero-body"
-                id="markup-3"
-              >
-                <h1 class="title is-2">Markup Text 3</h1>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis repellendus, omnis quidem ad dolorem aliquid. Fugit dolorem dolor ea odit omnis deleniti rerum vel, deserunt et, eius labore placeat rem.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi quis in voluptatem optio labore exercitationem ab porro unde dolorum, distinctio itaque doloribus quas maxime? Dolor, assumenda veritatis reiciendis fuga perspiciatis!Lorem ipsum dolor sit amet, consectetur adipisicing elit. Esse hic neque nesciunt incidunt nemo fugit dolorum inventore nam illo tempora voluptate architecto, aspernatur ducimus, iusto doloribus quos doloremque. Beatae, deserunt.</p>
+                <h1 class="title is-2">Props参数</h1>
+                <blockquote>
+                  <pre class="language-js">
+                <code class="language-js">
+props: {
+  // 类型(仅能为bottom 和 top)
+  type: {
+    type: String,
+    default: 'top',
+    validator (value) {
+      return value === 'top' || value === 'bottom'
+    }
+  },
+  // 偏移距离
+  offset: {
+    type: Number,
+    default: 0
+  },
+  // 监听间隔毫秒数 (事件节流)
+  delay: {
+    type: Number,
+    default: 100
+  },
+  // z-index值(当绝对定位时, z-index值)
+  zIndex: {
+    type: Number,
+    default: 10
+  }
+}
+</code></pre>
+                </blockquote>
               </section>
             </div>
           </div>
 
-          <aside class="column is-2">
+          <aside class="column is-3">
             <affix
-              :offset="100"
+              :offset="50"
               class="scrollaffix-sidebar"
             >
               <div class="card">
                 <header class="card-header">
-                  <p class="card-header-title heading">Scroll Affix sidebar</p>
+                  <p class="card-header-title heading">相关链接</p>
                 </header>
                 <div class="card-content">
                   <div class="content">
-                    <p>This is the scroll affix aside with some markup text to make it taller than the viewport height.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic deleniti laudantium qui repudiandae ad, et excepturi voluptate illo ea quibusdam, temporibus, cupiditate dolore adipisci aliquid itaque incidunt odio minus quaerat.Lorem ipsum dolor sit amet, consectetur adipisicing elit. ?</p>
+                    <ul>
+                      <li>
+                        <a
+                          href="https://www.iviewui.com/components/affix"
+                          rel="noopener noreferrer"
+                          target="_blank"
+                        >iview affix组件</a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://vue.ant.design/components/affix-cn/"
+                          target="_blank"
+                        >ant design affix组件</a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://github.com/eddiemf/vue-affix"
+                          target="_blank"
+                        >vue-affix组件</a>
+                      </li>
+                      <li>
+                        <a
+                          href="https://www.zhangxinxu.com/wordpress/2019/01/dom-quiz-27-window-scroll/"
+                          target="_blank"
+                        >张鑫旭-窗体滚动二三事</a>
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -143,83 +192,98 @@
         </div>
       </div>
     </main>
-    <section class="section">
-      <div class="container">
-        <h1
-          class="title is-1"
-        >Some more markup text so that the affix can reach the end of the content section.</h1>
-      </div>
-    </section>
     <hr>
     <footer class="footer">
       <p class="has-text-centered">
         Made with love by
         <a
-          href="http://github.com/eddiemf"
+          href="https://github.com/dream2023"
           title="<3"
-        >eddie</a>.
+        >zhangchaojie</a>.
       </p>
     </footer>
   </div>
 </template>
 
 <script>
-
+import Github from './Github'
 export default {
-  name: 'app'
+  name: 'app',
+  components: {
+    Github
+  }
 }
 </script>
 
 <style>
 body {
-  overflow-x: hidden;
+  min-width: 1200px;
+  background-color: #f5f5d5;
+  font-family: "Trebuchet MS", Arial, "Lucida Grande", Verdana, Lucida,
+    Helvetica, sans-serif;
 }
-.hero.is-info {
-  background-color: #409eff;
+
+.page-title {
+  color: #000000;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  border-bottom: 1px solid #d3d3d3;
 }
-.hero a {
-  color: #00d1b2 !important;
+
+blockquote {
+  background-color: #f5f2f0;
+  padding: 1em;
+  margin: 2em 0;
+  border-radius: 1em;
+  font-family: Consolas, Monaco, "Andale Mono", monospace;
+  border-width: 0.3em;
+  border-color: #e0dfcc;
+  border-style: solid;
+  text-shadow: 0 1px white;
+  overflow: auto;
+}
+.token {
+  background: none !important;
+}
+.token.tag {
+  padding-right: 0;
+  font-size: 1em;
+}
+.token.attr-name {
+  padding-left: 0.5em;
+}
+.number {
+  font-size: 1rem;
+  height: 1.5em;
+  min-width: 1em;
+  padding: 0;
+}
+pre {
+  padding: 0 !important;
+}
+
+.hero {
+  background: none;
+  color: #111;
+}
+
+.hero-body {
+  padding: 1rem 1.5rem;
 }
 
 .logo-heading a {
-  color: #fff !important;
+  color: #000000 !important;
 }
 
 .sidebar-menu {
-  width: 318px;
+  width: 196px;
 }
 
-@media screen and (max-width: 1383px) {
-  .sidebar-menu {
-    width: 270px;
-  }
+.menu-list a {
+  cursor: pointer;
 }
-
-@media screen and (max-width: 1191px) {
-  .sidebar-menu {
-    width: 222px;
-  }
-}
-
-.scrollaffix-sidebar {
-  width: 204px;
-  font-size: 14px;
-}
-
-@media screen and (max-width: 1383px) {
-  .scrollaffix-sidebar {
-    width: 170px;
-  }
-}
-
-@media screen and (max-width: 1191px) {
-  .scrollaffix-sidebar {
-    width: 140px;
-    font-size: 12px;
-  }
-}
-
-.scrollaffix-sidebar .card-content {
-  padding: 15px;
+.menu-list a:hover {
+  color: #3273dc;
+  background: none;
 }
 </style>

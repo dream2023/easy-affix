@@ -1,6 +1,5 @@
 <template>
   <div
-    :isAffix="isAffix"
     :style="styles"
     ref="wrapper"
   >
@@ -14,7 +13,7 @@ import { throttle } from 'throttle-debounce'
 export default {
   name: 'Affix',
   props: {
-    // 类型
+    // 类型(仅能为bottom 和 top)
     type: {
       type: String,
       default: 'top',
@@ -22,17 +21,17 @@ export default {
         return value === 'top' || value === 'bottom'
       }
     },
-    // 距离
+    // 偏移距离
     offset: {
       type: Number,
       default: 0
     },
-    // 监听间隔时间
+    // 监听间隔毫秒数 (事件节流)
     delay: {
       type: Number,
       default: 100
     },
-    // z-index值
+    // z-index值(当绝对定位时, z-index值)
     zIndex: {
       type: Number,
       default: 10
