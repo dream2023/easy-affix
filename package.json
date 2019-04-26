@@ -3,8 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "build:lib": "vue build -t lib --name easy-affix -d ./dist/ ./src/index.js",
+    "build:docs": "vue-cli-service build",
+    "build": "npm run lint && npm run build:docs && npm run build:lib",
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
