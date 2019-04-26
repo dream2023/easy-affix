@@ -1,6 +1,7 @@
 # easy-affix | Vue 图钉组件
 
-[![license](https://img.shields.io/npm/l/easy-affix.svg)](https://dream2023.github.io/easy-affix/)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg)](https://opensource.org/licenses/mit-license.php)
+[![LICENSE](https://img.shields.io/badge/license-Anti%20996-blue.svg)](https://github.com/996icu/996.ICU/blob/master/LICENSE)
 [![npm](https://img.shields.io/npm/v/easy-affix.svg)](https://www.npmjs.com/package/easy-affix)
 [![size](https://img.shields.io/bundlephobia/minzip/easy-affix.svg)](https://www.npmjs.com/package/easy-affix)
 [![download](https://img.shields.io/npm/dw/easy-affix.svg)](https://npmcharts.com/compare/easy-affix?minimal=true)
