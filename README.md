@@ -59,6 +59,7 @@ props: {
 
 ## 待做事项
 
+- 增加 typescript 提示
 - 增加单元测试
 - 增加 e2e 测试
 - 增加指定相对元素偏移 target

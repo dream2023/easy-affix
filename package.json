@@ -1,7 +1,21 @@
 {
   "name": "easy-affix",
-  "version": "0.1.0",
-  "private": true,
+  "version": "1.0.0",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dream2023/easy-affix"
+  },
+  "keywords": [
+    "vue",
+    "affix",
+    "vue-affix",
+    "easy-affix",
+    "sticty",
+    "sticky",
+    "vue-sticky",
+    "scroll"
+  ],
   "scripts": {
     "build:lib": "vue build -t lib --name easy-affix -d ./dist/ ./src/index.js",
     "build:docs": "vue-cli-service build",

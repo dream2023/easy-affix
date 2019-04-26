@@ -154,6 +154,7 @@ props: {
                 <h1 class="title is-2">待做事项</h1>
                 <blockquote>
                   <ul style="margin-left: 20px;line-height: 2em;">
+                    <li>增加 typescript 提示</li>
                     <li>增加单元测试</li>
                     <li>增加e2e测试</li>
                     <li>增加指定相对元素偏移target</li>
