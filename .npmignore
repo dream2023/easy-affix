@@ -1,0 +1,14 @@
+node_modules
+tests
+docs
+documentation
+public
+vue.config.js
+coverage
+babel.config.js
+.editorconfig
+.cypress.json
+dist/demo.html
+dist/vue-image-pro.common.js
+dist/vue-image-pro.common.js.map
+TODO.md

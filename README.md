@@ -25,7 +25,7 @@ npm install easy-affix --save
 
 ## 文档和示例
 
-[https://github.com/dream2023/easy-affix](https://github.com/dream2023/easy-affix)
+[https://dream2023.github.io/easy-affix/](https://dream2023.github.io/easy-affix/)
 
 ## Props 参数
 

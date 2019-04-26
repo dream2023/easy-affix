@@ -1,18 +1,18 @@
 {
   "name": "easy-affix",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "repository": {
     "type": "git",
     "url": "https://github.com/dream2023/easy-affix"
   },
+  "homepage": "https://dream2023.github.io/easy-affix/",
   "keywords": [
     "vue",
     "affix",
     "vue-affix",
     "easy-affix",
     "sticty",
-    "sticky",
     "vue-sticky",
     "scroll"
   ],
