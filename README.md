@@ -1,5 +1,10 @@
 # easy-affix | Vue 图钉组件
 
+[![license](https://img.shields.io/npm/l/easy-affix.svg)](https://dream2023.github.io/easy-affix/)
+[![npm](https://img.shields.io/npm/v/easy-affix.svg)](https://www.npmjs.com/package/easy-affix)
+[![size](https://img.shields.io/bundlephobia/minzip/easy-affix.svg)](https://www.npmjs.com/package/easy-affix)
+[![download](https://img.shields.io/npm/dw/easy-affix.svg)](https://npmcharts.com/compare/easy-affix?minimal=true)
+
 ## 介绍
 
 使用图钉，可以将内容固定在屏幕上，并且不随页面的滚动而滚动。常用于侧边菜单等。
