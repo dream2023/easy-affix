@@ -44,6 +44,10 @@
                   href="#props"
                   title="Props"
                 >Props参数</a>
+                <a
+                  href="#todo"
+                  title="Todo"
+                >待做事项</a>
               </div>
             </affix>
           </aside>
@@ -143,6 +147,20 @@ props: {
 </code></pre>
                 </blockquote>
               </section>
+              <section
+                class="hero-body"
+                id="todo"
+              >
+                <h1 class="title is-2">待做事项</h1>
+                <blockquote>
+                  <ul style="margin-left: 20px;line-height: 2em;">
+                    <li>增加单元测试</li>
+                    <li>增加e2e测试</li>
+                    <li>增加指定相对元素偏移target</li>
+                    <li>增加英文文档</li>
+                  </ul>
+                </blockquote>
+              </section>
             </div>
           </div>
 
@@ -216,8 +234,8 @@ export default {
 </script>
 
 <style>
+html,
 body {
-  min-width: 1200px;
   background-color: #f5f5d5;
   font-family: "Trebuchet MS", Arial, "Lucida Grande", Verdana, Lucida,
     Helvetica, sans-serif;
@@ -285,5 +303,13 @@ pre {
 .menu-list a:hover {
   color: #3273dc;
   background: none;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+footer {
+  padding: 3rem 1.5rem 4rem !important;
 }
 </style>
