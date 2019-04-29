@@ -1,123 +1,52 @@
 <template>
   <div id="app">
-    <github/>
-    <section class="hero">
-      <div class="container page-title">
-        <h1 class="title is-1 logo-heading">
-          <a
-            href="https://github.com/dream10nian/easy-affix"
-            title="easy-affix"
-          >easy-affix | vue图钉组件</a>
-        </h1>
-      </div>
-    </section>
-    <hr>
-    <main class="examples-section">
-      <div class="container">
-        <div class="columns">
-          <aside class="sidebar column is-2">
-            <affix class="menu sidebar-menu">
-              <div class="menu-label">
-                <h2>导航栏</h2>
-              </div>
-              <div
-                :offset="0"
-                class="menu-list"
-              >
-                <a
-                  href="#intro"
-                  title="Intro"
-                >介绍</a>
-                <a
-                  href="#reason"
-                  title="Reason"
-                >创作原因</a>
-                <a
-                  href="#install"
-                  title="Install"
-                >安装</a>
-                <a
-                  href="#usage"
-                  title="Usage"
-                >使用</a>
-                <a
-                  href="#props"
-                  title="Props"
-                >Props参数</a>
-                <a
-                  href="#todo"
-                  title="Todo"
-                >待做事项</a>
-              </div>
-            </affix>
-          </aside>
+    <easy-doc
+      :menus="menuList"
+      author="zhangchaojie"
+      githubUrl="https://github.com/dream2023/easy-affix/"
+      title="easy-affix | vue图钉组件"
+    >
+      <section id="intro">
+        <h2>介绍</h2>
+        <p>使用图钉，可以将内容固定在屏幕上，并且不随页面的滚动而滚动。常用于侧边菜单等。</p>
+      </section>
+      <section id="reason">
+        <h2>创作原因</h2>
+        <p>
+          其实在
+          <code>iview</code>和
+          <code>ant-design</code>框架中已有
+          affix组件, 但如果在小项目或者使用element之类的框架, 就没办法引入了(虽然可以同时安装两个框架,也可以按需引入, 但是不建议)。
+        </p>
+        <p>
+          另外, 网上虽然已有
+          <code>vue-affix</code>, 但是其必须指定相对元素, 而不可以默认跟随window, 所以和我的需求略微不同, 就动手做了一个。
+        </p>
+      </section>
+      <section id="install">
+        <h2>安装</h2>
+        <blockquote>npm install easy-affix --save</blockquote>
+      </section>
+      <section id="usage">
+        <h2>使用</h2>
+        <p>左侧导航栏使用了最基本的形式:</p>
+        <blockquote>
+          <pre class="language-html"><code class="language-html">&lt;affix&gt;导航栏...&lt;/affix&gt;</code></pre>
+        </blockquote>
+        <p>还可以指定偏移距离:</p>
+        <blockquote>
+          <pre class="language-html"><code class="language-html">&lt;affix&nbsp;:offset="50"&gt;当距离顶部50px时, 开始绝对定位...&lt;/affix></code></pre>
+        </blockquote>
+        <p>相对于窗口底部偏移:</p>
+        <blockquote>
+          <pre class="language-html"><code class="language-html">&lt;affix&nbsp;type="bottom"&gt;相对于底部而言&lt;/affix></code></pre>
+        </blockquote>
+      </section>
 
-          <div class="column">
-            <div
-              class="hero"
-              id="example-content"
-            >
-              <section
-                class="hero-body"
-                id="intro"
-              >
-                <h1 class="title is-2">介绍</h1>
-                <p>使用图钉，可以将内容固定在屏幕上，并且不随页面的滚动而滚动。常用于侧边菜单等。</p>
-              </section>
-              <section
-                class="hero-body"
-                id="reason"
-              >
-                <h1 class="title is-2">创作原因</h1>
-                <p>
-                  其实在
-                  <code>iview</code>和
-                  <code>ant-design</code>框架中已有
-                  affix组件, 但如果在小项目或者使用element之类的框架, 就没办法引入了(虽然可以同时安装两个框架,也可以按需引入, 但是不建议)。
-                </p>
-                <br>
-                <p>
-                  另外, 网上虽然已有
-                  <code>vue-affix</code>, 但是其必须指定相对元素, 而不可以默认跟随window, 所以和我的需求略微不同, 就动手做了一个。
-                </p>
-              </section>
-
-              <section
-                class="hero-body"
-                id="install"
-              >
-                <h1 class="title is-2">安装</h1>
-                <affix type="bottom">
-                  <blockquote>npm install easy-affix --save</blockquote>
-                </affix>
-              </section>
-
-              <section
-                class="hero-body"
-                id="usage"
-              >
-                <h1 class="title is-2">使用</h1>
-                <p>左侧导航栏使用了最基本的形式:</p>
-                <blockquote>
-                  <pre class="language-html"><code class="language-html">&lt;affix&gt;导航栏...&lt;/affix&gt;</code></pre>
-                </blockquote>
-                <p>右侧相关链接使用了偏移距离:</p>
-                <blockquote>
-                  <pre class="language-html"><code class="language-html">&lt;affix&nbsp;:offset="50"&gt;相关链接...&lt;/affix></code></pre>
-                </blockquote>
-                <p>上面的安装提示使用了相对于窗口底部偏移:</p>
-                <blockquote>
-                  <pre class="language-html"><code class="language-html">&lt;affix&nbsp;type="bottom"&gt;npm install easy-affix --save&lt;/affix></code></pre>
-                </blockquote>
-              </section>
-
-              <section
-                class="hero-body"
-                id="props"
-              >
-                <h1 class="title is-2">Props参数</h1>
-                <blockquote>
-                  <pre class="language-js">
+      <section id="props">
+        <h2>Props参数</h2>
+        <blockquote>
+          <pre class="language-js">
                 <code class="language-js">
 props: {
   // 类型(仅能为bottom 和 top)
@@ -145,102 +74,105 @@ props: {
   }
 }
 </code></pre>
-                </blockquote>
-              </section>
-              <section
-                class="hero-body"
-                id="todo"
-              >
-                <h1 class="title is-2">待做事项</h1>
-                <blockquote>
-                  <ul style="margin-left: 20px;line-height: 2em;">
-                    <li>增加 typescript 提示</li>
-                    <li>增加单元测试</li>
-                    <li>增加e2e测试</li>
-                    <li>增加指定相对元素偏移target</li>
-                    <li>增加英文文档</li>
-                  </ul>
-                </blockquote>
-              </section>
-            </div>
-          </div>
-
-          <aside class="column is-3">
-            <affix
-              :offset="50"
-              class="scrollaffix-sidebar"
-            >
-              <div class="card">
-                <header class="card-header">
-                  <p class="card-header-title heading">相关链接</p>
-                </header>
-                <div class="card-content">
-                  <div class="content">
-                    <ul>
-                      <li>
-                        <a
-                          href="https://www.iviewui.com/components/affix"
-                          rel="noopener noreferrer"
-                          target="_blank"
-                        >iview affix组件</a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://vue.ant.design/components/affix-cn/"
-                          target="_blank"
-                        >ant design affix组件</a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://github.com/eddiemf/vue-affix"
-                          target="_blank"
-                        >vue-affix组件</a>
-                      </li>
-                      <li>
-                        <a
-                          href="https://www.zhangxinxu.com/wordpress/2019/01/dom-quiz-27-window-scroll/"
-                          target="_blank"
-                        >张鑫旭-窗体滚动二三事</a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </affix>
-          </aside>
-        </div>
-      </div>
-    </main>
-    <hr>
-    <footer class="footer">
-      <p class="has-text-centered">
-        Made with love by
-        <a
-          href="https://github.com/dream2023"
-          title="<3"
-        >zhangchaojie</a>.
-      </p>
-    </footer>
+        </blockquote>
+      </section>
+      <section id="todo">
+        <h2>待做事项</h2>
+        <blockquote>
+          <ul>
+            <li>增加 typescript 提示</li>
+            <li>增加单元测试</li>
+            <li>增加e2e测试</li>
+            <li>增加指定相对元素偏移target</li>
+            <li>增加英文文档</li>
+          </ul>
+        </blockquote>
+      </section>
+      <section id="reference">
+        <h2>参考链接</h2>
+        <ul>
+          <li>
+            <a
+              href="https://www.iviewui.com/components/affix"
+              rel="noopener noreferrer"
+              target="_blank"
+            >iview affix组件</a>
+          </li>
+          <li>
+            <a
+              href="https://vue.ant.design/components/affix-cn/"
+              target="_blank"
+            >ant design affix组件</a>
+          </li>
+          <li>
+            <a
+              href="https://github.com/eddiemf/vue-affix"
+              target="_blank"
+            >vue-affix组件</a>
+          </li>
+          <li>
+            <a
+              href="https://www.zhangxinxu.com/wordpress/2019/01/dom-quiz-27-window-scroll/"
+              target="_blank"
+            >张鑫旭-窗体滚动二三事</a>
+          </li>
+        </ul>
+      </section>
+    </easy-doc>
   </div>
 </template>
 
 <script>
-import Github from './Github'
+import EasyDoc from './EasyDoc'
 export default {
   name: 'app',
   components: {
-    Github
+    EasyDoc
+  },
+  data () {
+    return {
+      menuList: [
+        {
+          title: '介绍',
+          href: 'intro'
+        },
+        {
+          title: '创作原因',
+          href: 'reason'
+        },
+        {
+          title: '安装',
+          href: 'install'
+        },
+        {
+          title: '使用',
+          href: 'usage'
+        },
+        {
+          title: 'Props参数',
+          href: 'props'
+        },
+        {
+          title: '待做事项',
+          href: 'todo'
+        },
+        {
+          title: '参考链接',
+          href: 'reference'
+        }
+      ]
+    }
   }
 }
 </script>
 
-<style>
-html,
-body {
-  background-color: #f5f5d5;
-  font-family: "Trebuchet MS", Arial, "Lucida Grande", Verdana, Lucida,
-    Helvetica, sans-serif;
-}
+<style lang="scss">
+// @import "./styles/variable.scss";
+// @import "bulma/bulma.sass";
+// @import "./styles/main.scss";
+// @import "./styles/prism.css";
+
+/* html,
 
 .page-title {
   color: #000000;
@@ -312,5 +244,5 @@ ul {
 
 footer {
   padding: 3rem 1.5rem 4rem !important;
-}
+} */
 </style>

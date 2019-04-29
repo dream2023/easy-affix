@@ -13,6 +13,11 @@ import { throttle } from 'throttle-debounce'
 export default {
   name: 'Affix',
   props: {
+    // 是否开启
+    enabled: {
+      type: Boolean,
+      default: true
+    },
     // 类型(仅能为bottom 和 top)
     type: {
       type: String,
@@ -74,7 +79,7 @@ export default {
     },
     // 样式
     styles () {
-      if (this.isAffix) {
+      if (this.isAffix && this.enabled) {
         const elRect = this.elRect
         return {
           position: 'fixed',
@@ -89,32 +94,32 @@ export default {
     }
   },
   mounted () {
-    // 确保页面已渲染, 能获取到$refs能获取到节点
-    this.$nextTick(() => {
-      // 获取元素的初始位置
-      this.elOffsetPageTop = this.getElOffsetPageTop()
+    if (this.enabled) {
+      // 确保页面已渲染, 能获取到$refs能获取到节点
+      this.$nextTick(() => {
+        // 获取元素的初始位置
+        this.elOffsetPageTop = this.getElOffsetPageTop()
 
-      // 事件节流(因为不需要页面响应式, 所以没有在data中设置)
-      this.scrollFn = throttle(this.delay, () => {
+        // 事件节流(因为不需要页面响应式, 所以没有在data中设置)
+        this.scrollFn = throttle(this.delay, () => {
+          this.updateScrollDistance()
+        })
+        this.resizeFn = throttle(this.delay, () => {
+          this.updateWinHeight()
+        })
+
+        // 初始化时需要执行一次
         this.updateScrollDistance()
-      })
-      this.resizeFn = throttle(this.delay, () => {
         this.updateWinHeight()
+
+        // 开启事件监听
+        window.addEventListener('scroll', this.scrollFn, false)
+        window.addEventListener('resize', this.resizeFn, false)
       })
-
-      // 初始化时需要执行一次
-      this.updateScrollDistance()
-      this.updateWinHeight()
-
-      // 开启事件监听
-      window.addEventListener('scroll', this.scrollFn, false)
-      window.addEventListener('resize', this.resizeFn, false)
-    })
+    }
   },
   beforeDestroy () {
-    // 删除时间监听
-    window.removeEventListener('scroll', this.scrollFn, false)
-    window.removeEventListener('resize', this.resizeFn, false)
+    this.stopListen()
   },
   watch: {
     scrollDistance () {
@@ -122,6 +127,11 @@ export default {
     },
     winHeight () {
       this.handleChange()
+    },
+    enabled (value) {
+      if (value === false) {
+        this.stopListen()
+      }
     }
   },
   methods: {
@@ -169,6 +179,12 @@ export default {
           this.isAffix = false
         }
       }
+    },
+
+    // 删除事件监听
+    stopListen () {
+      window.removeEventListener('scroll', this.scrollFn, false)
+      window.removeEventListener('resize', this.resizeFn, false)
     }
   }
 }

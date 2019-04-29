@@ -1,6 +1,6 @@
 {
   "name": "easy-affix",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": false,
   "repository": {
     "type": "git",
@@ -30,8 +30,6 @@
     "throttle-debounce": "^2.1.0"
   },
   "devDependencies": {
-    "vue": "^2.6.10",
-    "core-js": "^2.6.5",
     "@vue/cli-plugin-babel": "^3.6.0",
     "@vue/cli-plugin-e2e-cypress": "^3.6.0",
     "@vue/cli-plugin-eslint": "^3.6.0",
@@ -42,10 +40,13 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "core-js": "^2.6.5",
+    "easy-affix": "^1.0.4",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
-    "normalize.css": "^8.0.1",
+    "prismjs": "^1.16.0",
+    "vue": "^2.6.10",
     "vue-template-compiler": "^2.5.21"
   },
   "gitHooks": {

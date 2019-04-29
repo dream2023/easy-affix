@@ -5,10 +5,14 @@ documentation
 public
 vue.config.js
 coverage
+jest.config.js
+.eslintrc.js
+cypress.json
+postcss.config.js
 babel.config.js
 .editorconfig
 .cypress.json
 dist/demo.html
-dist/vue-image-pro.common.js
-dist/vue-image-pro.common.js.map
+dist/easy-affix.common.js
+dist/easy-affix.common.js.map
 TODO.md
