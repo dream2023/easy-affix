@@ -29,6 +29,26 @@
       </section>
       <section id="usage">
         <h2>使用</h2>
+        <blockquote>
+          <pre class="language-js"><code class="language-js">// 局部引入
+import Affix from 'easy-affix'
+export default {
+  components: {
+    Affix
+  }
+}</code></pre>
+        </blockquote>
+        <blockquote>
+          <pre class="language-js"><code class="language-js">// 全局引入
+import Affix from 'easy-affix'
+Vue.component('affix', Affix)
+</code></pre>
+        </blockquote>
+      </section>
+
+      <section id="props">
+        <h2>Props参数</h2>
+
         <p>左侧导航栏使用了最基本的形式:</p>
         <blockquote>
           <pre class="language-html"><code class="language-html">&lt;affix&gt;导航栏...&lt;/affix&gt;</code></pre>
@@ -41,10 +61,6 @@
         <blockquote>
           <pre class="language-html"><code class="language-html">&lt;affix&nbsp;type="bottom"&gt;相对于底部而言&lt;/affix></code></pre>
         </blockquote>
-      </section>
-
-      <section id="props">
-        <h2>Props参数</h2>
         <blockquote>
           <pre class="language-js">
                 <code class="language-js">

@@ -23,17 +23,50 @@
   <code>vue-affix</code>, 但是其必须指定相对元素, 而不可以默认跟随window, 所以和我的需求略微不同, 就动手做了一个。
 </p>
 
+## 文档和示例
+
+[https://dream2023.github.io/easy-affix/](https://dream2023.github.io/easy-affix/)
+
 ## 安装
 
 ```bash
 npm install easy-affix --save
 ```
 
-## 文档和示例
+## 使用
 
-[https://dream2023.github.io/easy-affix/](https://dream2023.github.io/easy-affix/)
+```js
+// 局部引入
+import Affix from 'easy-affix'
+export default {
+  components: {
+    Affix
+  }
+}
+```
+
+```js
+// 全局引入
+import Affix from 'easy-affix'
+Vue.component('affix', Affix)
+```
 
 ## Props 参数
+
+```html
+<!-- 基本用法  -->
+<affix>内容....</affix>
+```
+
+```html
+<!-- 可以指定偏移距离 -->
+<affix :offset="50">当距离顶部50px时, 开始绝对定位...</affix>
+```
+
+```html
+<!-- 相对于窗口底部偏移 -->
+<affix type="bottom">内容....</affix>
+```
 
 ```js
 props: {

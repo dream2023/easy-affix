@@ -1,9 +1,12 @@
 <template>
-  <div
-    :style="styles"
-    ref="wrapper"
-  >
-    <slot/>
+  <div>
+    <!-- 为了正确获取到宽度, 所以嵌套了一层 -->
+    <div
+      :style="styles"
+      ref="wrapper"
+    >
+      <slot/>
+    </div>
   </div>
 </template>
 
@@ -44,9 +47,11 @@ export default {
   },
   data () {
     return {
+      throttled: null,
       isAffix: false,
       scrollDistance: 0,
       winHeight: 0,
+      styles: {},
       elOffsetPageTop: 0
     }
   },
@@ -76,21 +81,6 @@ export default {
       } else {
         return null
       }
-    },
-    // 样式
-    styles () {
-      if (this.isAffix && this.enabled) {
-        const elRect = this.elRect
-        return {
-          position: 'fixed',
-          zIndex: this.zIndex,
-          left: elRect.left + 'px',
-          width: elRect.width + 'px',
-          [this.type]: this.offset + 'px'
-        }
-      } else {
-        return {}
-      }
     }
   },
   mounted () {
@@ -101,20 +91,15 @@ export default {
         this.elOffsetPageTop = this.getElOffsetPageTop()
 
         // 事件节流(因为不需要页面响应式, 所以没有在data中设置)
-        this.scrollFn = throttle(this.delay, () => {
-          this.updateScrollDistance()
-        })
-        this.resizeFn = throttle(this.delay, () => {
-          this.updateWinHeight()
+        this.throttled = throttle(this.delay, () => {
+          this.handleChange()
         })
 
         // 初始化时需要执行一次
-        this.updateScrollDistance()
-        this.updateWinHeight()
+        this.handleChange()
 
         // 开启事件监听
-        window.addEventListener('scroll', this.scrollFn, false)
-        window.addEventListener('resize', this.resizeFn, false)
+        this.startListen()
       })
     }
   },
@@ -122,12 +107,6 @@ export default {
     this.stopListen()
   },
   watch: {
-    scrollDistance () {
-      this.handleChange()
-    },
-    winHeight () {
-      this.handleChange()
-    },
     enabled (value) {
       if (value === false) {
         this.stopListen()
@@ -147,18 +126,11 @@ export default {
       return selfTop + scrollDistance - this.offsetTop - clientTop
     },
 
-    // 更新滚动距离
-    updateScrollDistance () {
-      this.scrollDistance = window.pageYOffset || document.documentElement.scrollTop
-    },
-
-    // 窗口高度
-    updateWinHeight () {
-      this.winHeight = window.innerHeight
-    },
-
     // 检测变化
     handleChange () {
+      this.winHeight = window.innerHeight
+      this.scrollDistance = window.pageYOffset || document.documentElement.scrollTop
+
       const isAffix = this.isAffix
       if (this.type === 'top') {
         if (!isAffix && this.scrollDistance >= this.elOffsetPageTop) {
@@ -179,12 +151,37 @@ export default {
           this.isAffix = false
         }
       }
+
+      // 设置样式
+      this.setStyles()
+    },
+
+    // 设置样式
+    setStyles () {
+      let styles = {}
+      if (this.isAffix && this.enabled) {
+        const elRect = this.elRect
+        styles = {
+          position: 'fixed',
+          zIndex: this.zIndex,
+          left: elRect.left + 'px',
+          width: this.$el.offsetWidth + 'px',
+          [this.type]: this.offset + 'px'
+        }
+      }
+      this.styles = styles
+    },
+
+    // 开启事件监听
+    startListen () {
+      window.addEventListener('scroll', this.throttled, false)
+      window.addEventListener('resize', this.throttled, false)
     },
 
     // 删除事件监听
     stopListen () {
-      window.removeEventListener('scroll', this.scrollFn, false)
-      window.removeEventListener('resize', this.resizeFn, false)
+      window.removeEventListener('scroll', this.throttled, false)
+      window.removeEventListener('resize', this.throttled, false)
     }
   }
 }
