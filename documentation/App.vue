@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <easy-doc
+    <easy-github-pages
       :menus="menuList"
       author="zhangchaojie"
       githubUrl="https://github.com/dream2023/easy-affix/"
@@ -134,17 +134,13 @@ props: {
           </li>
         </ul>
       </section>
-    </easy-doc>
+    </easy-github-pages>
   </div>
 </template>
 
 <script>
-import EasyDoc from './EasyDoc'
 export default {
   name: 'app',
-  components: {
-    EasyDoc
-  },
   data () {
     return {
       menuList: [
@@ -181,84 +177,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-// @import "./styles/variable.scss";
-// @import "bulma/bulma.sass";
-// @import "./styles/main.scss";
-// @import "./styles/prism.css";
-
-/* html,
-
-.page-title {
-  color: #000000;
-  font-weight: 500;
-  letter-spacing: -0.03em;
-  border-bottom: 1px solid #d3d3d3;
-}
-
-blockquote {
-  background-color: #f5f2f0;
-  padding: 1em;
-  margin: 2em 0;
-  border-radius: 1em;
-  font-family: Consolas, Monaco, "Andale Mono", monospace;
-  border-width: 0.3em;
-  border-color: #e0dfcc;
-  border-style: solid;
-  text-shadow: 0 1px white;
-  overflow: auto;
-}
-.token {
-  background: none !important;
-}
-.token.tag {
-  padding-right: 0;
-  font-size: 1em;
-}
-.token.attr-name {
-  padding-left: 0.5em;
-}
-.number {
-  font-size: 1rem;
-  height: 1.5em;
-  min-width: 1em;
-  padding: 0;
-}
-pre {
-  padding: 0 !important;
-}
-
-.hero {
-  background: none;
-  color: #111;
-}
-
-.hero-body {
-  padding: 1rem 1.5rem;
-}
-
-.logo-heading a {
-  color: #000000 !important;
-}
-
-.sidebar-menu {
-  width: 196px;
-}
-
-.menu-list a {
-  cursor: pointer;
-}
-.menu-list a:hover {
-  color: #3273dc;
-  background: none;
-}
-
-ul {
-  list-style-type: disc;
-}
-
-footer {
-  padding: 3rem 1.5rem 4rem !important;
-} */
-</style>

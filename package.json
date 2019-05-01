@@ -41,11 +41,10 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "core-js": "^2.6.5",
-    "easy-affix": "^1.0.4",
+    "easy-github-pages": "^1.0.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",
-    "prismjs": "^1.16.0",
     "vue": "^2.6.10",
     "vue-template-compiler": "^2.5.21"
   },
