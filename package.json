@@ -41,7 +41,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
     "core-js": "^2.6.5",
-    "easy-github-pages": "^1.0.1",
+    "easy-github-pages": "^1.1.1",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
     "lint-staged": "^8.1.5",

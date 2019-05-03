@@ -30,19 +30,26 @@
       <section id="usage">
         <h2>使用</h2>
         <blockquote>
-          <pre class="language-js"><code class="language-js">// 局部引入
-import Affix from 'easy-affix'
-export default {
-  components: {
-    Affix
-  }
-}</code></pre>
+          <pre class="language-js">
+            <code class="language-js">
+              // 局部引入
+              import Affix from 'easy-affix'
+              export default {
+                components: {
+                  Affix
+                }
+              }
+            </code>
+          </pre>
         </blockquote>
         <blockquote>
-          <pre class="language-js"><code class="language-js">// 全局引入
-import Affix from 'easy-affix'
-Vue.component('affix', Affix)
-</code></pre>
+          <pre class="language-js">
+            <code class="language-js">
+              // 全局引入
+              import Affix from 'easy-affix'
+              Vue.component('affix', Affix)
+            </code>
+          </pre>
         </blockquote>
       </section>
 
