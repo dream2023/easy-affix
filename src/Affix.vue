@@ -1,11 +1,8 @@
 <template>
   <div>
     <!-- 为了正确获取到宽度, 所以嵌套了一层 -->
-    <div
-      :style="styles"
-      ref="wrapper"
-    >
-      <slot/>
+    <div :style="styles" ref="wrapper">
+      <slot />
     </div>
   </div>
 </template>
@@ -77,7 +74,11 @@ export default {
     elOffsetWinBottom () {
       if (this.type === 'bottom') {
         // 滚动距离 - 元素距离窗口底部(元素距离顶部的距离 + 元素自身的高度 + 元素距离底部的偏移 - 窗口的高度)
-        return this.scrollDistance - (this.elOffsetPageTop + this.elRect.height + this.offsetBottom - this.winHeight)
+        return (
+          this.scrollDistance +
+          this.winHeight -
+          (this.elOffsetPageTop + this.elRect.height + this.offsetBottom)
+        )
       } else {
         return null
       }
@@ -85,10 +86,27 @@ export default {
   },
   mounted () {
     if (this.enabled) {
+      this.start()
+    }
+  },
+  beforeDestroy () {
+    this.stopListen()
+  },
+  watch: {
+    enabled (value) {
+      if (value === false) {
+        this.stopListen()
+      } else {
+        this.start()
+      }
+    }
+  },
+  methods: {
+    start () {
       // 确保页面已渲染, 能获取到$refs能获取到节点
       this.$nextTick(() => {
         // 获取元素的初始位置
-        this.elOffsetPageTop = this.getElOffsetPageTop()
+        this.updateElOffsetPageTop()
 
         // 事件节流(因为不需要页面响应式, 所以没有在data中设置)
         this.throttled = throttle(this.delay, () => {
@@ -101,27 +119,20 @@ export default {
         // 开启事件监听
         this.startListen()
       })
-    }
-  },
-  beforeDestroy () {
-    this.stopListen()
-  },
-  watch: {
-    enabled (value) {
-      if (value === false) {
-        this.stopListen()
-      }
-    }
-  },
-  methods: {
+    },
+    updateElOffsetPageTop () {
+      this.elOffsetPageTop = this.getElOffsetPageTop()
+    },
     // 元素距离顶部的距离
     getElOffsetPageTop () {
       // 1.元素本身相对于窗口的高度(可能正或者负)
       const selfTop = this.elRect.top
       // 2.页面的滚动高度(进入页面的瞬间)
-      const scrollDistance = window.pageYOffset || document.documentElement.scrollTop
+      const scrollDistance =
+        window.pageYOffset || document.documentElement.scrollTop
       // 3.在IE中文档会相对左上角偏移几个像素，需要去掉它，减去clientTop和clientLeft
-      const clientTop = document.documentElement.clientTop || document.body.clientTop || 0
+      const clientTop =
+        document.documentElement.clientTop || document.body.clientTop || 0
       // 4.减去设置的偏移距离(其实相当于元素的高度增加了offsetTop的px)
       return selfTop + scrollDistance - this.offsetTop - clientTop
     },
@@ -129,7 +140,8 @@ export default {
     // 检测变化
     handleChange () {
       this.winHeight = window.innerHeight
-      this.scrollDistance = window.pageYOffset || document.documentElement.scrollTop
+      this.scrollDistance =
+        window.pageYOffset || document.documentElement.scrollTop
 
       const isAffix = this.isAffix
       if (this.type === 'top') {
