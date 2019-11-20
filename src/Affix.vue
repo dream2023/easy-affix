@@ -96,6 +96,7 @@ export default {
     enabled (value) {
       if (value === false) {
         this.stopListen()
+        this.handleChange()
       } else {
         this.start()
       }
